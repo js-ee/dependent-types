@@ -1,10 +1,10 @@
 
 const DependentTypes = require('../..');
 
-Object.keys(DependentTypes.StringBased).map(prop => {
-    console.log(`DependentTypes.StringBased.${prop}:`, Object.keys(DependentTypes.StringBased[prop]));
+Object.keys(DependentTypes.NumberBased).map(prop => {
+    console.log(`DependentTypes.NumberBased.${prop}:`, Object.keys(DependentTypes.NumberBased[prop]));
 });
 
-console.log('StringBased done!');
+console.log('NumberBased done!');
 
 require('./positive');
