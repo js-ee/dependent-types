@@ -1,6 +1,4 @@
 
-const renameFunction = require('../utils/rename_function');
-
 function create (options={}, name='StringBased') {
     const {
         min,
@@ -10,10 +8,16 @@ function create (options={}, name='StringBased') {
         validate,
     } = options;
 
-    const Cls = renameFunction(name, function (str) {
+    const Cls = function classConstructor (str) {
+        this.name = name;
         String.call(this, str);
         this.__value = str;
         return this;
+    };
+
+    Object.defineProperty(Cls, 'name', {
+        value: name,
+        writable: false
     });
 
     Cls.prototype.toString = function toString () {

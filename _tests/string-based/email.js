@@ -8,6 +8,10 @@ describe('Email', function () {
         assert.equal(typeof Email.prototype, 'object', 'prototype is not defined');
     });
 
+    it('constructor name defined', function () {
+        assert.equal(Email.name, 'Email');
+    });
+
     it('equal to string', function () {
         const str = 'some@email.com';
         const instance = new Email(str);
