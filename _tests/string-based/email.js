@@ -11,8 +11,6 @@ describe('Email', function () {
     it('equal to string', function () {
         const str = 'some@email.com';
         const instance = new Email(str);
-        // assert(instance == str);
-        // assert(instance === str);
         assert.equal(instance, str);
     });
 
@@ -21,9 +19,9 @@ describe('Email', function () {
         assert.equal(typeof instance.validate, 'function', 'validate is not defined');
     });
 
-    xdescribe('validate', function () {
+    describe('validate', function () {
         it('empty', function () {
-            assert((new Email()).validate());
+            assert(!(new Email()).validate());
         });
 
         it('valid', function () {
@@ -43,8 +41,10 @@ describe('Email', function () {
             assert(!(new Email('aaa@bbb')).validate());
             assert(!(new Email('aaa.bbb.cc')).validate());
             assert(!(new Email('@bbb.cc')).validate());
-            assert(!(new Email('^aaa@bbb.cc$')).validate());
             assert(!(new Email('aaa@')).validate());
+            assert(!(new Email('^aaa@bbb.cc$')).validate());
+            assert(!(new Email('\naaa@bbb.cc')).validate());
+            assert(!(new Email('aaa@bbb.cc\n')).validate());
         });
     });
 });

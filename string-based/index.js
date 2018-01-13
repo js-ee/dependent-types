@@ -1,7 +1,7 @@
 
 const renameFunction = require('../utils/rename_function');
 
-function create (options = {}, name='StringBased') {
+function create (options={}, name='StringBased') {
     const {
         min,
         max,
@@ -10,16 +10,22 @@ function create (options = {}, name='StringBased') {
         validate,
     } = options;
 
-    const Cls = renameFunction(name, function (...args) {
-        return String.apply(this, [args]);
+    const Cls = renameFunction(name, function (str) {
+        String.call(this, str);
+        this.__value = str;
+        return this;
     });
+
+    Cls.prototype.toString = function toString () {
+        return this.__value;
+    };
 
     if (validate) {
         Cls.prototype.validate = validate;
     } else {
         Cls.prototype.validate = function validate () {
-            console.log('validate >>>', this, regexp);
-            if (regexp && regexp.test(this)) return false;
+            const val = this.toString();
+            if (regexp && !regexp.test(val)) return false;
             return true;
         };
     }
