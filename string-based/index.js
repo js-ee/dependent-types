@@ -1,13 +1,29 @@
 
 const renameFunction = require('../utils/rename_function');
 
-function create (options) {
-    const Cls = renameFunction('StringBased', function (...args) {
+function create (options = {}, name='StringBased') {
+    const {
+        min,
+        max,
+        regexp,
+        singleLine,
+        validate,
+    } = options;
+
+    const Cls = renameFunction(name, function (...args) {
         return String.apply(this, [args]);
     });
-    Cls.prototype.validate = function valudate () {
-        return true;
-    };
+
+    if (validate) {
+        Cls.prototype.validate = validate;
+    } else {
+        Cls.prototype.validate = function validate () {
+            console.log('validate >>>', this, regexp);
+            if (regexp && regexp.test(this)) return false;
+            return true;
+        };
+    }
+
     return Cls;
 }
 
