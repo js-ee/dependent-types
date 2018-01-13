@@ -20,7 +20,13 @@ function create (options={}, name='StringBased') {
         writable: false
     });
 
+    Cls.prototype = new String();
+
     Cls.prototype.toString = function toString () {
+        return this.__value;
+    };
+
+    Cls.prototype.valueOf = function valueOf () {
         return this.__value;
     };
 

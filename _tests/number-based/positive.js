@@ -12,8 +12,18 @@ describe('Positive', function () {
         assert.equal(Positive.name, 'Positive');
     });
 
+    it('instanseof Positive', function () {
+        const instance = new Positive(1);
+        assert(instance instanceof Positive);
+    });
+
+    it('instanseof Number', function () {
+        const instance = new Positive(1);
+        assert(instance instanceof Number);
+    });
+
     it('equal to number', function () {
-        const str = 'name';
+        const str = 25;
         const instance = new Positive(str);
         assert.equal(instance, str);
     });
@@ -30,6 +40,11 @@ describe('Positive', function () {
 
         it('valid', function () {
             assert((new Positive(1)).validate());
+        });
+
+        it('invalid', function () {
+            assert(!(new Positive(-1)).validate());
+            assert(!(new Positive('Hello')).validate());
         });
     });
 });

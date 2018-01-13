@@ -12,6 +12,16 @@ describe('Email', function () {
         assert.equal(Email.name, 'Email');
     });
 
+    it('instanseof Email', function () {
+        const instance = new Email('some@email.com');
+        assert(instance instanceof Email);
+    });
+
+    it('instanseof String', function () {
+        const instance = new Email('some@email.com');
+        assert(instance instanceof String);
+    });
+
     it('equal to string', function () {
         const str = 'some@email.com';
         const instance = new Email(str);

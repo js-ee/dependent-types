@@ -12,6 +12,16 @@ describe('Tweet', function () {
         assert.equal(Tweet.name, 'Tweet');
     });
 
+    it('instanseof Email', function () {
+        const instance = new Tweet('hello');
+        assert(instance instanceof Tweet);
+    });
+
+    it('instanseof String', function () {
+        const instance = new Tweet('hello');
+        assert(instance instanceof String);
+    });
+
     it('equal to string', function () {
         const str = 'name';
         const instance = new Tweet(str);

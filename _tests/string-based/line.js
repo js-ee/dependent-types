@@ -12,6 +12,16 @@ describe('Line', function () {
         assert.equal(Line.name, 'Line');
     });
 
+    it('instanseof Email', function () {
+        const instance = new Line('line');
+        assert(instance instanceof Line);
+    });
+
+    it('instanseof String', function () {
+        const instance = new Line('line');
+        assert(instance instanceof String);
+    });
+
     it('equal to string', function () {
         const str = 'some line';
         const instance = new Line(str);

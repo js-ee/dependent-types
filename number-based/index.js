@@ -11,10 +11,10 @@ function create (options={}, name='NumberBased') {
         validate,
     } = options;
 
-    const Cls = function classConstructor (str) {
+    const Cls = function classConstructor (val) {
         this.name = name;
-        Number.call(this, str);
-        this.__value = str;
+        Number.call(this, val);
+        this.__value = val;
         return this;
     };
 
@@ -22,6 +22,12 @@ function create (options={}, name='NumberBased') {
         value: name,
         writable: false
     });
+
+    Cls.prototype = new Number();
+
+    Cls.prototype.toString = function toString () {
+        return '' + this.__value;
+    };
 
     Cls.prototype.valueOf = function valueOf () {
         return this.__value;
