@@ -1,5 +1,6 @@
 
 require('./string-based');
+require('./number-based');
 
 
 const DependentTypes = require('..');

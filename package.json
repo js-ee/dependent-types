@@ -1,6 +1,6 @@
 {
   "name": "dependent-types",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dependent types library",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/js-ee/dependent-types.git"
   },
   "keywords": [
-    "dependent-types\u001b[D\u001b[D\u001b[D\u001b[D\u001b["
+    "dependent types"
   ],
   "author": "Alexander Abramov",
   "license": "MIT",

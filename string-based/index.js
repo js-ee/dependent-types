@@ -41,7 +41,7 @@ function create (options={}, name='StringBased') {
 }
 
 function define (name, ...args) {
-    exports[name] = create(...args);
+    return exports[name] = create(...args);
 }
 
 exports.create = create;
