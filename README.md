@@ -1,27 +1,23 @@
 # Dependent types library
 
 ```
-const DependentTypes = require('dependent-types');
-const DepString = DependentTypes.String({
-    min: 2,
-    max: 10,
-    allow: [null],
-    default: null,
-});
+const StringBased = require('dependent-types/string-based');
+const Line = StringBased.create({
+    singleLine: true,
+}, 'Line');
 
-let s1 = DepString('Hello!');   // 'Hello'
-let s2 = DepString();   // null
-let s3 = DepString('Some long string...'); // Exception
+const line = new Line('some text');
+line.validate(); // true
 ```
 
 ```
-const DependentTypes = require('dependent-types');
-const Email = DependentTypes.String({
-    regexp: /.+@.+/gmi,
-});
+const StringBased = require('dependent-types/string-based');
+const Email = StringBased.create({
+    regexp: /^[a-zA-Z0-9\._\-]+@[a-zA-Z0-9\._\-]+\.[a-zA-Z0-9\._\-]+$/,
+}, 'Email');
 
-let s1 = DepString('my@email.com'); // 'my@email.com'
-let s3 = DepString('Other string'); // Exception
+const email = new Email('email@example.com');
+email.validate(); // true
 ```
 
 

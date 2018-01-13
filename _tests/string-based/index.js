@@ -9,3 +9,4 @@ console.log('StringBased done!');
 
 require('./email');
 require('./line');
+require('./tweet');
