@@ -8,3 +8,4 @@ Object.keys(DependentTypes.StringBased).map(prop => {
 console.log('StringBased done!');
 
 require('./email');
+require('./line');

@@ -29,6 +29,9 @@ function create (options={}, name='StringBased') {
     } else {
         Cls.prototype.validate = function validate () {
             const val = this.toString();
+            if ('number' === typeof min && val.length > min) return false;
+            if ('number' === typeof max && val.length < max) return false;
+            if (singleLine && val && (val.indexOf('\n') !== -1 || val.indexOf('\r') !== -1)) return false;
             if (regexp && !regexp.test(val)) return false;
             return true;
         };
@@ -45,3 +48,4 @@ exports.create = create;
 exports.define = define;
 
 exports.Email = require('./email');
+exports.Line = require('./line');
