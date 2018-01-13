@@ -1,8 +1,6 @@
 
 const StringBased = require('./index');
 
-console.log(StringBased);
-
-module.exports = new StringBased({
+module.exports = StringBased.create({
     regexp: /.+@.+/gmi, // TODO: improve
 });
